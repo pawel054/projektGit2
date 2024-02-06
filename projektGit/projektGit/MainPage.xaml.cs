@@ -71,5 +71,40 @@ namespace projektGit
                 FinishQuiz();
             }
         }
+
+        private async void SubmitAnswer(object sender, EventArgs e)
+        {
+            submitAnswerButton.IsEnabled = false;
+            stopwatch.Stop();
+            int correctAnswer = questions[currentQusetionIndex] * 2;
+            if(int.TryParse(answerEntry.Text, out correctAnswer) && userAnswer == correctAnswer)
+            {
+                currentScore++;
+                feedbackLabel.Text = "Poprawna odpowiedź";
+                feedbackFrame.BorderColor = Color.Green;
+                feedbackLabel.TextColor = Color.Green;
+            }
+            else
+            {
+                feedbackLabel.Text = $"Niestety, to jest zła odpowiedź.Poprawna odpowiedź to: {correctAnswer}";
+                feedbackFrame.BackgroundColor = Color.Red;
+                feedbackLabel.TextColor = Color.Red;
+            }
+            feedbackLabel.IsVisible = true;
+            feedbackLabel.IsVisible = true;
+
+            times.Add(stopwatch.Elapsed.TotalSeconds);
+            currentQusetionIndex++;
+            answerEntry.Text = string.Empty;
+            await Task.Delay(2500);
+            ShowNextQuestion();
+        }
+
+        private void FinishQuiz()
+        {
+            double totalTime = times.Sum();
+            SaveResult(userNameEntry.Text, totalTime, currentScore);
+            DisplayFinalResults(totalTime);
+        }
     }
 }
