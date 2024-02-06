@@ -27,6 +27,28 @@
                             </Grid>
                         </Frame>
                     </Grid>
+                    <CollectionView x:Name="scoresCollectionView">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Frame BackgroundColor="white" CornerRadius="20" HorizontalOptions="Center" WidthRequest="280" Margin="0,15,0,0">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label x:Name="rankingPlace" Grid.Column="0" Text="{Binding RankingPosition}" HorizontalOptions="Center"/>
+                                            <Label Grid.Column="1" Text="{Binding UserName}" HorizontalOptions="Center"/>
+                                            <Label Grid.Column="2" Text="{Binding Score}" HorizontalOptions="Center"/>
+                                            <Label Grid.Column="3" Text="{Binding TotalTime, StringFormat='{0:F2}s'}" HorizontalOptions="Center"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
             </ScrollView>
         </StackLayout>
