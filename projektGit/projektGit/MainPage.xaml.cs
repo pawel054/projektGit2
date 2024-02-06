@@ -43,7 +43,32 @@ namespace projektGit
                 finishGameView.IsVisible = false;
                 gameView.IsVisible = true;
                 ShowNextQuestion();
+            }
+        }
 
+        private void PlayAgainButton(object sender, EventArgs e)
+        {
+            finishGameView.isVisible = false;
+            startGameView = true;
+            GenerateQuestions();
+        }
+
+        private void ShowNextQuestion()
+        {
+            submitAnswerButton.IsEnabled = true;
+            if(currentQuestinonIndex < questions.Count)
+            {
+                questionLable.IsVisible = true;
+                question.Lable.Text = $"Podwojona wartość {questions[currentQusetionIndex]} to:";
+                answerEntry.IsVisible = true;
+                submitAnswerButton.IsVisible = true;
+                feedbackLabel.IsVisible = false;
+                feedbackFrame.IsVisible = false;
+                stopwatch.Restart();
+            }
+            else
+            {
+                FinishQuiz();
             }
         }
     }
