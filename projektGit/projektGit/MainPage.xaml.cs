@@ -125,7 +125,7 @@ namespace projektGit
 
         private void SaveResult(string userNamem , double totalTime, int score)
         {
-            App.Database.SaveResultAsync(new UserResult(userNamem, totalTime, score));
+            App.Database.SaveResultAsync(new UserResult(userNamem, totalTime, score)); 
         }
     }
 }
