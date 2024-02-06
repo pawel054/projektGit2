@@ -114,7 +114,7 @@ namespace projektGit
 
         private void DisplayFinalResults(double totalTime) 
         {
-            finishGameView.IsVisible = true;
+            finishGameView.IsVisible = true; 
             gameView.IsVisible = false;
             questionLabel.IsVisible = false;
             answerEntry.isVisible = false;
