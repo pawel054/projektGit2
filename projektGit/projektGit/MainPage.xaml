@@ -4,7 +4,7 @@
              x:Class="projektGit.MainPage">
 
     <StackLayout BackgroundColor="#B5D8F1">
-        <StackLayout x:Name="startGameView" HorizontalOptions="Center" Margin="0,50,0,0" IsVisible="false">
+        <StackLayout x:Name="startGameView" HorizontalOptions="Center" Margin="0,50,0,0">
             <Frame BackgroundColor="White" CornerRadius="20" Padding="10,0,10,0" WidthRequest="250">
                 <Entry x:Name="userNameEntry" Placeholder="Nick" HorizontalTextAlignment="Center"/>
             </Frame>
@@ -23,7 +23,7 @@
             </Frame>
             <Button x:Name="submitAnswerButton" Text="Zatwierdź odpowiedź" BackgroundColor="#3578DE" TextColor="White" CornerRadius="20" HorizontalOptions="Center" WidthRequest="220" TextTransform="None" FontSize="17" Margin="0,10,0,0" IsVisible="false" Clicked="SubmitAnswer"/>
         </StackLayout>
-        <StackLayout x:Name="finishGameView">
+        <StackLayout x:Name="finishGameView" IsVisible="false">
             <Label Text="Koniec quizu" TextColor="White" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" Padding="30"/>
             <Frame BackgroundColor="White" CornerRadius="15" HorizontalOptions="Center" WidthRequest="170" Padding="10">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
