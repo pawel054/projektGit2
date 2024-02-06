@@ -11,7 +11,7 @@ namespace projektGit
 {
     public partial class MainPage : ContentPage
     {
-        private int currentQusetionIndex = 0;
+        private int currentQuestionIndex = 0;
         private int currentScore = 0;
         private List<int> questions = new List<int>();
         private Stopwatch stopwatch = new Stopwatch();
@@ -37,7 +37,7 @@ namespace projektGit
             else
             {
                 currentScore = 0;
-                currentQusetionIndex = 0;
+                currentQuestionIndex = 0;
                 times.Clear();
                 startGameView.IsVisible = false;
                 finishGameView.IsVisible = false;
@@ -48,18 +48,18 @@ namespace projektGit
 
         private void PlayAgainButton(object sender, EventArgs e)
         {
-            finishGameView.isVisible = false;
-            startGameView = true;
+            finishGameView.IsVisible = false;
+            startGameView.IsVisible = true;
             GenerateQuestions();
         }
 
         private void ShowNextQuestion()
         {
             submitAnswerButton.IsEnabled = true;
-            if(currentQuestinonIndex < questions.Count)
+            if(currentQuestionIndex < questions.Count)
             {
-                questionLable.IsVisible = true;
-                question.Lable.Text = $"Podwojona wartość {questions[currentQusetionIndex]} to:";
+                questionLabel.IsVisible = true;
+                questionLabel.Text = $"Podwojona wartość {questions[currentQuestionIndex]} to:";
                 answerEntry.IsVisible = true;
                 submitAnswerButton.IsVisible = true;
                 feedbackLabel.IsVisible = false;
@@ -76,8 +76,8 @@ namespace projektGit
         {
             submitAnswerButton.IsEnabled = false;
             stopwatch.Stop();
-            int correctAnswer = questions[currentQusetionIndex] * 2;
-            if(int.TryParse(answerEntry.Text, out correctAnswer) && userAnswer == correctAnswer)
+            int correctAnswer = questions[currentQuestionIndex] * 2;
+            if(int.TryParse(answerEntry.Text, out int userAnswer) && userAnswer == correctAnswer)
             {
                 currentScore++;
                 feedbackLabel.Text = "Poprawna odpowiedź";
@@ -94,7 +94,7 @@ namespace projektGit
             feedbackLabel.IsVisible = true;
 
             times.Add(stopwatch.Elapsed.TotalSeconds);
-            currentQusetionIndex++;
+            currentQuestionIndex++;
             answerEntry.Text = string.Empty;
             await Task.Delay(2500);
             ShowNextQuestion();
@@ -117,7 +117,7 @@ namespace projektGit
             finishGameView.IsVisible = true; 
             gameView.IsVisible = false;
             questionLabel.IsVisible = false;
-            answerEntry.isVisible = false;
+            answerEntry.IsVisible = false;
             submitAnswerButton.IsVisible = false;
             resultPoints.Text = currentScore.ToString();
             resultTime.Text = totalTime.ToString("F2");
